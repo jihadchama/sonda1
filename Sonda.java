@@ -73,7 +73,9 @@ public class Sonda implements Girar, Mover {
 	@Override
 	public void girar() {
 
-		if (getRotacao() == "R") {
+		switch (getRotacao()) {
+		
+		case "R":
 
 			switch (this.getDirecao()) {
 
@@ -93,7 +95,9 @@ public class Sonda implements Girar, Mover {
 				System.out.println("Esta não é uma direção válida");
 				break;
 			}
-		} else {
+		break;
+		
+		case "L":
 
 			switch (this.getDirecao()) {
 
@@ -113,7 +117,10 @@ public class Sonda implements Girar, Mover {
 				System.out.println("Esta não é uma direção válida");
 				break;
 			}
-
+		break;
+		
+		default:
+			System.out.println("A rotação informada não é válida, informe R para Direita e L para esquerda");
 		}
 
 	}
