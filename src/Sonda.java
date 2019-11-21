@@ -1,35 +1,18 @@
 
-public class Sonda implements Girar, Mover {
+public class Sonda implements Turn, Move {
 
 	private int posicaoX;
 	private int posicaoY;
 	private String direcao;
-	private String rotacao;
-
-	public Sonda(int x, int y, String coord) {
+	
+	public Sonda(int x, int y, String direcao) {
 		this.posicaoX = x;
 		this.posicaoY = y;
-		this.direcao = coord;
-	}
-
-	public void setRotacao(String rotacao) {
-		this.rotacao = rotacao;
-	}
-
-	public String getRotacao() {
-		return rotacao;
-	}
-
-	public void setPosicaoX(int posicaoX) {
-		this.posicaoX = posicaoX;
+		this.direcao = direcao;
 	}
 
 	public int getPosicaoX() {
 		return this.posicaoX;
-	}
-
-	public void setPosicaoY(int posicaoY) {
-		this.posicaoY = posicaoY;
 	}
 
 	public int getPosicaoY() {
@@ -49,20 +32,20 @@ public class Sonda implements Girar, Mover {
 	}
 
 	@Override
-	public void mover() {
+	public void move() {
 
 		switch (this.getDirecao()) {
 		case "N":
-			setPosicaoY(posicaoY += 1);
+			posicaoY += 1;
 			break;
 		case "S":
-			setPosicaoY(posicaoY -= 1);
+			posicaoY -= 1;
 			break;
 		case "W":
-			setPosicaoX(posicaoX -= 1);
+			posicaoX -= 1;
 			break;
 		case "E":
-			setPosicaoX(posicaoX += 1);
+			posicaoX += 1;
 			break;
 		default:
 			System.out.println("Esta não é uma direção válida.");
@@ -71,9 +54,9 @@ public class Sonda implements Girar, Mover {
 	}
 
 	@Override
-	public void girar() {
+	public void turn(String rotacao) {
 
-		switch (getRotacao()) {
+		switch (rotacao) {
 		
 		case "R":
 
