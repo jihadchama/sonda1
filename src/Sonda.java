@@ -1,30 +1,31 @@
 
 public class Sonda implements Turn, Move {
 
-	private int posicaoX;
-	private int posicaoY;
-	private String direcao;
+	private int positionX;
+	private int positionY;
+	private String direction;
 	
+	private enum Direction {
+		N, W, S, E;
+	}
+			
 	public Sonda(int x, int y, String direcao) {
-		this.posicaoX = x;
-		this.posicaoY = y;
-		this.direcao = direcao;
+		this.positionX = x;
+		this.positionY = y;
+		this.direction = direcao;
 	}
 
 	public int getPosicaoX() {
-		return this.posicaoX;
+		return this.positionX;
 	}
 
 	public int getPosicaoY() {
-		return this.posicaoY;
+		return this.positionY;
 	}
 
-	public void setDirecao(String direcao) {
-		this.direcao = direcao;
-	}
-
+	
 	public String getDirecao() {
-		return this.direcao;
+		return this.direction;
 	}
 
 	public void posicaoAtual() {
@@ -36,16 +37,16 @@ public class Sonda implements Turn, Move {
 
 		switch (this.getDirecao()) {
 		case "N":
-			posicaoY += 1;
+			positionY += 1;
 			break;
 		case "S":
-			posicaoY -= 1;
+			positionY -= 1;
 			break;
 		case "W":
-			posicaoX -= 1;
+			positionX -= 1;
 			break;
 		case "E":
-			posicaoX += 1;
+			positionX += 1;
 			break;
 		default:
 			System.out.println("Esta não é uma direção válida.");
@@ -63,16 +64,16 @@ public class Sonda implements Turn, Move {
 			switch (this.getDirecao()) {
 
 			case "N":
-				setDirecao("E");
+				this.direction = "E";
 				break;
 			case "E":
-				setDirecao("S");
+				this.direction = "S";
 				break;
 			case "S":
-				setDirecao("W");
+				this.direction = "W";
 				break;
 			case "W":
-				setDirecao("N");
+				this.direction = "N";
 				break;
 			default:
 				System.out.println("Esta não é uma direção válida");
@@ -85,16 +86,16 @@ public class Sonda implements Turn, Move {
 			switch (this.getDirecao()) {
 
 			case "N":
-				setDirecao("W");
+				this.direction = "W";
 				break;
 			case "W":
-				setDirecao("S");
+				this.direction = "S";
 				break;
 			case "S":
-				setDirecao("E");
+				this.direction = "E";
 				break;
 			case "E":
-				setDirecao("N");
+				this.direction = "N";
 				break;
 			default:
 				System.out.println("Esta não é uma direção válida");
