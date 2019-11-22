@@ -1,51 +1,44 @@
 
 public class Sonda implements Turn, Move {
+	
 
 	private int positionX;
 	private int positionY;
-	private String direction;
-	
-	private enum Direction {
-		N, W, S, E;
-	}
+	private Direction direction = Direction.NORTH;
 			
-	public Sonda(int x, int y, String direcao) {
+	public Sonda(int x, int y) {
 		this.positionX = x;
 		this.positionY = y;
-		this.direction = direcao;
+		
 	}
 
-	public int getPosicaoX() {
+	public int getPositionX() {
 		return this.positionX;
 	}
 
-	public int getPosicaoY() {
+	public int getPositionY() {
 		return this.positionY;
 	}
 
 	
-	public String getDirecao() {
-		return this.direction;
-	}
-
-	public void posicaoAtual() {
-		System.out.println(getPosicaoX() + " " + getPosicaoY() + " " + getDirecao());
+	public void currentPosition() {
+		System.out.println(getPositionX() + " " + getPositionY() + " " + direction.name());
 	}
 
 	@Override
 	public void move() {
 
-		switch (this.getDirecao()) {
-		case "N":
+		switch (direction) {
+		case NORTH:
 			positionY += 1;
 			break;
-		case "S":
+		case SOUTH:
 			positionY -= 1;
 			break;
-		case "W":
+		case WEST:
 			positionX -= 1;
 			break;
-		case "E":
+		case EAST:
 			positionX += 1;
 			break;
 		default:
@@ -57,56 +50,18 @@ public class Sonda implements Turn, Move {
 	@Override
 	public void turn(String rotacao) {
 
-		switch (rotacao) {
-		
+		switch(rotacao) {
 		case "R":
-
-			switch (this.getDirecao()) {
-
-			case "N":
-				this.direction = "E";
-				break;
-			case "E":
-				this.direction = "S";
-				break;
-			case "S":
-				this.direction = "W";
-				break;
-			case "W":
-				this.direction = "N";
-				break;
-			default:
-				System.out.println("Esta não é uma direção válida");
-				break;
-			}
+			direction = direction.getRight();
 		break;
 		
 		case "L":
-
-			switch (this.getDirecao()) {
-
-			case "N":
-				this.direction = "W";
-				break;
-			case "W":
-				this.direction = "S";
-				break;
-			case "S":
-				this.direction = "E";
-				break;
-			case "E":
-				this.direction = "N";
-				break;
-			default:
-				System.out.println("Esta não é uma direção válida");
-				break;
-			}
+			direction = direction.getLeft();
 		break;
 		
 		default:
-			System.out.println("A rotação informada não é válida, informe R para Direita e L para esquerda");
+			System.out.println("Esta não é uma direção válida.");
+
 		}
-
 	}
-
 }
