@@ -2,7 +2,7 @@ package br.com.jihad.sonda.modelo;
 
 public enum Direction {
 
-    NORTH(1,0){
+    NORTH(0,1){
         @Override
         public Direction getLeft() {
             return WEST;
