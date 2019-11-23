@@ -1,67 +1,49 @@
 package br.com.jihad.sonda.modelo;
 
 public class Sonda implements Turn, Move {
-	
 
-	private int positionX;
-	private int positionY;
-	private Direction direction = Direction.N;
-			
-	public Sonda(int x, int y) {
-		this.positionX = x;
-		this.positionY = y;
-		
-	}
+        private int positionX;
+        private int positionY;
+        private Direction direction = Direction.NORTH;
 
-	public int getPositionX() {
-		return this.positionX;
-	}
+        public Sonda(int x, int y) {
+            this.positionX = x;
+            this.positionY = y;
 
-	public int getPositionY() {
-		return this.positionY;
-	}
+        }
 
-	
-	public void currentPosition() {
-		System.out.println(getPositionX() + " " + getPositionY() + " " + direction.name());
-	}
+        public int getPositionX() {
+            return this.positionX;
+        }
 
-	@Override
-	public void move() {
+        public int getPositionY() {
+            return this.positionY;
+        }
 
-		switch (direction) {
-		case N:
-			positionY += 1;
-			break;
-		case S:
-			positionY -= 1;
-			break;
-		case W:
-			positionX -= 1;
-			break;
-		case E:
-			positionX += 1;
-			break;
-		default:
-			System.out.println("Esta n„o È uma direÁ„o v·lida.");
-		}
-	}
 
-	@Override
-	public void turn(String turningDirection) {
+        public void currentPosition() {
+            System.out.println(getPositionX() + " " + getPositionY() + " " + direction.name());
+        }
 
-		switch(turningDirection) {
-		case "R":
-			direction = direction.getRight();
-		break;
-		
-		case "L":
-			direction = direction.getLeft();
-		break;
-		
-		default:
-			System.out.println("Esta n„o È uma direÁ„o v·lida.");
+    @Override
+    public void move() {
+        positionX += direction.getX();
+        positionY += direction.getY();
+    }
 
-		}
-	}
+    @Override
+    public void turn(String turningDirection) {
+
+            switch(turningDirection) {
+                case "R":
+                    direction = direction.getRight();
+                    break;
+                case "L":
+                    direction = direction.getLeft();
+                    break;
+                default:
+                    System.out.println("Esta n√£o √© uma dire√ß√£o v√°lida");
+
+    }
+}
 }

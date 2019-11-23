@@ -1,49 +1,73 @@
 package br.com.jihad.sonda.modelo;
+
 public enum Direction {
-	
-		N{
-			@Override
-			public Direction getLeft() {
-				return W;
-			}
 
-			@Override
-			public Direction getRight() {
-				return E;
-			}
-		}, W {
-			@Override
-			public Direction getLeft() {
-				return S;
-			}
+    NORTH(1,0){
+        @Override
+        public Direction getLeft() {
+            return WEST;
+        }
 
-			@Override
-			public Direction getRight() {
-				return N;
-			}
-		}, S {
-			@Override
-			public Direction getLeft() {
-				return W;
-			}
+        @Override
+        public Direction getRight() {
+            return EAST;
+        }
+    },
 
-			@Override
-			public Direction getRight() {
-				return E;
-			}
-		}, E {
-			@Override
-			public Direction getLeft() {
-				return N;
-			}
+    WEST (-1, 0){
+        @Override
+        public Direction getLeft() {
+            return SOUTH;
+        }
 
-			@Override
-			public Direction getRight() {
-				return S;
-			}
-		};
-	
-	public abstract Direction getLeft();
-	public abstract Direction getRight();
+        @Override
+        public Direction getRight() {
+            return NORTH;
+        }
+    },
+
+    SOUTH (0, -1){
+        @Override
+        public Direction getLeft() {
+            return WEST;
+        }
+
+        @Override
+        public Direction getRight() {
+            return EAST;
+        }
+    },
+
+    EAST (1, 0){
+        @Override
+        public Direction getLeft() {
+            return NORTH;
+        }
+
+        @Override
+        public Direction getRight() {
+            return SOUTH;
+        }
+    };
+
+    private int x, y;
+
+    Direction (int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public abstract Direction getLeft();
+    public abstract Direction getRight();
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+
+
 }
-
