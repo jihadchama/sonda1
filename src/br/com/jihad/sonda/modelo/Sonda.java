@@ -2,33 +2,20 @@ package br.com.jihad.sonda.modelo;
 
 public class Sonda implements Turn, Move {
 
-        private int positionX;
-        private int positionY;
-        private Direction direction = Direction.NORTH;
+    private Position position;
+    private Direction direction = Direction.NORTH;
 
-        public Sonda(int x, int y) {
-            this.positionX = x;
-            this.positionY = y;
+    public Sonda(Position position) {
+       this.position = position;
+    }
 
-        }
-
-        public int getPositionX() {
-            return this.positionX;
-        }
-
-        public int getPositionY() {
-            return this.positionY;
-        }
-
-
-        public void currentPosition() {
-            System.out.println(getPositionX() + " " + getPositionY() + " " + direction.name());
-        }
+    public void currentPosition() {
+            System.out.println(position.getX() + " " + position.getY() + " " + direction.name());
+    }
 
     @Override
     public void move() {
-        positionX += direction.getX();
-        positionY += direction.getY();
+    position = new Position (position.getX() + direction.getX(), position.getY() + direction.getY());
     }
 
     @Override
@@ -37,13 +24,13 @@ public class Sonda implements Turn, Move {
             switch(turningDirection) {
                 case "R":
                     direction = direction.getRight();
-                    break;
+                break;
                 case "L":
                     direction = direction.getLeft();
-                    break;
+                break;
                 default:
                     System.out.println("Esta não é uma direção válida");
-
+                break;
+            }
     }
-}
 }

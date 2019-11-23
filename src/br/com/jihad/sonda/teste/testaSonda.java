@@ -1,6 +1,7 @@
 package br.com.jihad.sonda.teste;
 
 import br.com.jihad.sonda.modelo.Planet;
+import br.com.jihad.sonda.modelo.Position;
 import br.com.jihad.sonda.modelo.Sonda;
 
 public class testaSonda {
@@ -12,7 +13,7 @@ public class testaSonda {
         mars.planetSize();
         // 6 6
 
-        Sonda sonda1 = new Sonda(2, 3);
+        Sonda sonda1 = new Sonda(new Position(2, 3));
 
         sonda1.currentPosition();
         // 2 3 N
