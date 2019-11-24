@@ -2,51 +2,51 @@ package br.com.jihad.sonda.modelo;
 
 public enum Direction {
 
-    NORTH(new Position(0,1)){
+    N(new Position(0,1)){
         @Override
         public Direction getLeft() {
-            return WEST;
+            return W;
         }
 
         @Override
         public Direction getRight() {
-            return EAST;
+            return E;
         }
     },
 
-    WEST (new Position(-1, 0)){
+    W (new Position(-1, 0)){
         @Override
         public Direction getLeft() {
-            return SOUTH;
+            return S;
         }
 
         @Override
         public Direction getRight() {
-            return NORTH;
+            return N;
         }
     },
 
-    SOUTH (new Position(0, -1)){
+    S (new Position(0, -1)){
         @Override
         public Direction getLeft() {
-            return WEST;
+            return W;
         }
 
         @Override
         public Direction getRight() {
-            return EAST;
+            return E;
         }
     },
 
-    EAST (new Position(1,0)){
+    E (new Position(1,0)){
         @Override
         public Direction getLeft() {
-            return NORTH;
+            return N;
         }
 
         @Override
         public Direction getRight() {
-            return SOUTH;
+            return S;
         }
     };
 
