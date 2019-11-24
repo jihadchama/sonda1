@@ -2,25 +2,30 @@ package br.com.jihad.sonda.modelo;
 
 public class Sonda implements Turn, Move, Land {
 
-    private Position position;
+    private Coordenates coordenates;
     private Direction direction;
 
-    @Override
-    public void land(int x, int y, Direction direction, Planet planet) {
 
-        if(x <= planet.getLimitX() && y <= planet.getLimitY()){
-            this.position = new Position(x, y);
-            this.direction = direction;
-        } else {
-            System.out.println("A nave não pode pousar fora do planeta.");
-        }
+    private boolean isPossibleLand(Coordenates coordenates, Planet planet) {
+        return coordenates.getX() <= planet.getLimitX() && coordenates.getY() <= planet.getLimitY();
+    }
+
+    @Override
+    public void land(Coordenates coordenates, Direction direction, Planet planet) {
+
+            if(isPossibleLand(coordenates, planet)) {
+                this.coordenates = coordenates;
+                this.direction = direction;
+            }
     }
 
     @Override
     public void move() {
 
-    position = new Position (position.getX() + direction.getX(), position.getY() + direction.getY());
+        coordenates = new Coordenates(coordenates.getX() + direction.getCoordenates().getX(), coordenates.getY() + direction.getCoordenates().getY());
+
     }
+
 
     @Override
     public void turn(String turningDirection) {
@@ -41,7 +46,7 @@ public class Sonda implements Turn, Move, Land {
 
     public void currentPosition() {
 
-        System.out.println(position.getX() + " " + position.getY() + " " + direction.name());
+        System.out.println(coordenates.getX() + " " + coordenates.getY() + " " + direction.name());
     }
 
 }

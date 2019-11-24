@@ -2,26 +2,22 @@ package br.com.jihad.sonda.modelo;
 
 public class Planet {
 
-    //static int limitX;
-    private final int limitX;
-    //static int limitY;
-    private final int limitY;
+    private final Coordenates coordenates;
 
 
-    public Planet(int x, int y) {
-        this.limitX = x;
-        this.limitY = y;
+    public Planet(Coordenates coordenates) {
+        this.coordenates = coordenates;
     }
 
     public int getLimitX() {
-        return limitX;
+        return coordenates.getX();
     }
 
     public int getLimitY() {
-        return limitY;
+        return coordenates.getY();
     }
 
     public void planetSize() {
-        System.out.println(limitX + " " + limitY);
+        System.out.println(getLimitX() + " " + getLimitY());
     }
 }

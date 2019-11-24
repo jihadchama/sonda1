@@ -1,3 +1,7 @@
+.idea/
+Sonda.iml
+movements.csv
+out/
 .classpath
 .metadata/
 .project
