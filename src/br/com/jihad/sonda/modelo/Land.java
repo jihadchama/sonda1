@@ -2,5 +2,5 @@ package br.com.jihad.sonda.modelo;
 
 public interface Land {
 
-    void land(Coordenates coordenates, Direction direction, Planet planet);
+    void land(Coordinate coordinate, Directions directions, Planet planet);
 }

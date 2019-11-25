@@ -1,11 +1,11 @@
 package br.com.jihad.sonda.modelo;
 
-public class Coordenates {
+public class Coordinate {
 
     private int x, y;
 
 
-    public Coordenates(int x, int y) {
+    public Coordinate(int x, int y) {
         this.x = x;
         this.y = y;
     }

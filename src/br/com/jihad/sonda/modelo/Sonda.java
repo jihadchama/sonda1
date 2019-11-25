@@ -2,41 +2,41 @@ package br.com.jihad.sonda.modelo;
 
 public class Sonda implements Turn, Move, Land {
 
-    private Coordenates coordenates;
-    private Direction direction;
+    private Coordinate coordinate;
+    private Directions directions;
 
 
-    private boolean isPossibleLand(Coordenates coordenates, Planet planet) {
-        return coordenates.getX() <= planet.getLimitX() && coordenates.getY() <= planet.getLimitY();
+    private boolean isPossibleLand(Coordinate coordinate, Planet planet) {
+        return coordinate.getX() <= planet.getLimitX() && coordinate.getY() <= planet.getLimitY();
     }
 
     @Override
-    public void land(Coordenates coordenates, Direction direction, Planet planet) {
+    public void land(Coordinate coordinate, Directions directions, Planet planet) {
 
-            if(isPossibleLand(coordenates, planet)) {
-                this.coordenates = coordenates;
-                this.direction = direction;
+            if(isPossibleLand(coordinate, planet)) {
+                this.coordinate = coordinate;
+                this.directions = directions;
             }
     }
 
     @Override
     public void move() {
 
-        coordenates = new Coordenates(coordenates.getX() + direction.getCoordenates().getX(), coordenates.getY() + direction.getCoordenates().getY());
+        coordinate = new Coordinate(coordinate.getX() + directions.getCoordinate().getX(), coordinate.getY() + directions.getCoordinate().getY());
 
     }
 
 
     @Override
-    public void turn(String turningDirection) {
+    public void turn(char turningDirection) {
 
             switch(turningDirection) {
 
-                case "R":
-                    direction = direction.getRight();
+                case 'R':
+                    directions = directions.getRight();
                 break;
-                case "L":
-                    direction = direction.getLeft();
+                case 'L':
+                    directions = directions.getLeft();
                 break;
                 default:
                     System.out.println("Esta não é uma direção válida.");
@@ -46,7 +46,7 @@ public class Sonda implements Turn, Move, Land {
 
     public void currentPosition() {
 
-        System.out.println(coordenates.getX() + " " + coordenates.getY() + " " + direction.name());
+        System.out.println(coordinate.getX() + " " + coordinate.getY() + " " + directions.name());
     }
 
 }
