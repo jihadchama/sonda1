@@ -5,71 +5,70 @@ import br.com.jihad.sonda.modelo.Planet;
 import br.com.jihad.sonda.modelo.Coordinate;
 import br.com.jihad.sonda.modelo.Sonda;
 
-import java.io.FileNotFoundException;
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
 
+public class testaSonda{
 
-public class testaSonda {
+        public static void main(String[] args) throws IOException {
 
-    public static void main(String[] args) throws FileNotFoundException {
+            Scanner movementsSonda = new Scanner(new File("movements.csv"));
 
+            String discoverPlanet = movementsSonda.nextLine().replaceAll("\\s","");
+            String sendSonda =  movementsSonda.nextLine().replaceAll("\\s","");
+            String commandsMovements = movementsSonda.nextLine();
 
-        String criaPlaneta = "5 5";
-        String criaPlaneta2 = criaPlaneta.replaceAll("\\s","");
-        String criaSonda = "1 2 N";
-        String criaSonda2 = criaSonda.replaceAll("\\s","");
-        String criaMovimentos = "LMLMLMLMM";
+            Coordinate planetCoordinate = new Coordinate(Integer.parseInt(String.valueOf(discoverPlanet.charAt(0))), Integer.parseInt(String.valueOf(discoverPlanet.charAt(1))));
+            Planet mars = new Planet(planetCoordinate);
 
+            Coordinate sondaCoordinate = new Coordinate(Integer.parseInt(String.valueOf(sendSonda.charAt(0))), Integer.parseInt(String.valueOf(sendSonda.charAt(1))));
 
-        Coordinate planetCoordinate = new Coordinate(Integer.parseInt(String.valueOf(criaPlaneta2.charAt(0))), Integer.parseInt(String.valueOf(criaPlaneta2.charAt(1))));
-        Planet mars = new Planet(planetCoordinate);
+            Sonda sonda = new Sonda();
 
-        Coordinate sondaCoordinate = new Coordinate(Integer.parseInt(String.valueOf(criaSonda2.charAt(0))), Integer.parseInt(String.valueOf(criaSonda2.charAt(1))));
+            Directions sondaDirection = Directions.EAST; //encontrar uma forma de não ter que iniciar uma direção.
 
-        Sonda sonda1 = new Sonda();
-
-        Directions sondaDirection = Directions.EAST;
-
-        switch(criaSonda2.charAt(2)){
-            case 'N':
-                sondaDirection = Directions.NORTH;
-                break;
-            case 'S':
-                sondaDirection = Directions.SOUTH;
-                break;
-            case 'W':
-                sondaDirection = Directions.WEST;
-                break;
-            case 'E':
-                sondaDirection = Directions.EAST;
-                break;
-            default:
-                System.out.println("Esta não é uma direção válida.");
-                break;
-        }
-
-        sonda1.land(sondaCoordinate, sondaDirection, mars);
-
-        char[] b = criaMovimentos.toCharArray();
-
-        for (char c : b) {
-
-            switch (c) {
-                case 'L':
-                    sonda1.turn('L');
+            switch(sendSonda.charAt(2)){
+                case 'N':
+                    sondaDirection = Directions.NORTH;
                     break;
-                case 'R':
-                    sonda1.turn('R');
+                case 'S':
+                    sondaDirection = Directions.SOUTH;
                     break;
-                case 'M':
-                    sonda1.move();
+                case 'W':
+                    sondaDirection = Directions.WEST;
+                    break;
+                case 'E':
+                    sondaDirection = Directions.EAST;
                     break;
                 default:
-                    System.out.println("Este não é um comando válido");
+                    System.out.println("Esta não é uma direção válida.");
+                    break;
             }
 
+            sonda.land(sondaCoordinate, sondaDirection, mars);
+
+            char[] commandList = commandsMovements.toCharArray();
+
+            for (char command : commandList) {
+
+                switch (command) {
+                    case 'L':
+                        sonda.turn('L');
+                        break;
+                    case 'R':
+                        sonda.turn('R');
+                        break;
+                    case 'M':
+                        sonda.move();
+                        break;
+                    default:
+                        System.out.println("Este não é um comando válido.");
+                }
+
+            }
+
+            sonda.currentPosition();
+
         }
-
-        sonda1.currentPosition();
-
-    }
 }
