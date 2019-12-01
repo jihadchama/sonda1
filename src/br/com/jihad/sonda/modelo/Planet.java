@@ -20,4 +20,15 @@ public class Planet {
     public void planetSize() {
         System.out.println(getLimitX() + " " + getLimitY());
     }
+
+    public void discoverPlanet(String planetExtension){
+
+        if (planetExtension.length() >= 2) {
+
+            Coordinate planetCoordinate = new Coordinate(Integer.parseInt(planetExtension.substring(0, 1)), Integer.parseInt(planetExtension.substring(1, 2)));
+
+        }
+    }
+
+
 }
