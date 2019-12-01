@@ -1,4 +1,4 @@
-package br.com.jihad.sonda.modelo;
+package br.com.jihad.sonda.vehicle;
 
 public interface Move {
     void move();

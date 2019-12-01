@@ -1,4 +1,8 @@
-package br.com.jihad.sonda.modelo;
+package br.com.jihad.sonda.vehicle;
+
+import br.com.jihad.sonda.model.Coordinate;
+import br.com.jihad.sonda.model.Directions;
+import br.com.jihad.sonda.planet.Planet;
 
 public class Sonda extends Vehicle {
 

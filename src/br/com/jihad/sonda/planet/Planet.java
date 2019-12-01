@@ -1,4 +1,6 @@
-package br.com.jihad.sonda.modelo;
+package br.com.jihad.sonda.planet;
+
+import br.com.jihad.sonda.model.Coordinate;
 
 public class Planet {
 

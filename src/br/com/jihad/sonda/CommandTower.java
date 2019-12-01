@@ -1,13 +1,25 @@
-package br.com.jihad.sonda.modelo;
+package br.com.jihad.sonda;
+
+import br.com.jihad.sonda.model.Coordinate;
+import br.com.jihad.sonda.model.Directions;
+import br.com.jihad.sonda.planet.Planet;
+import br.com.jihad.sonda.vehicle.Sonda;
+import br.com.jihad.sonda.vehicle.Vehicle;
 
 class CommandTower {
 
-    private boolean isPossibleLand(Coordinate coordinate, Planet planet) {
-        return (coordinate.getX() <= planet.getLimitX()) && (coordinate.getY() <= planet.getLimitY());
+    private boolean isPossibleLand(Vehicle vehicle, Planet planet) {
+        if (vehicle instanceof Sonda) {
+            Sonda sonda = (Sonda) vehicle;
+            Coordinate coordinate = sonda.getCoordinate();
+            if (coordinate.getX() <= planet.getLimitX()) if (coordinate.getY() <= planet.getLimitY()) return true;
+            return false;
+        }
+        return false;
     }
 
     void launch(Vehicle vehicle, Coordinate coordinate, char direction, Planet planet) {
-        if(isPossibleLand(coordinate, planet)) {
+        if(isPossibleLand(vehicle, planet)) {
             switch(direction) {
                 case 'N':
                     vehicle.land(coordinate, Directions.NORTH, planet);
@@ -31,22 +43,18 @@ class CommandTower {
     }
 
     private boolean isPossibleMove(Vehicle vehicle, Planet planet) {
-
         if (vehicle instanceof Sonda) {
             Sonda sonda = (Sonda) vehicle;
             Coordinate coordinate = sonda.getCoordinate();
             Directions directions = sonda.getDirection();
-            Coordinate newCordinate = new Coordinate(coordinate.getX() + directions.getCoordinate().getX(), coordinate.getY() + directions.getCoordinate().getY());
+            Coordinate newCoordinate = new Coordinate(coordinate.getX() + directions.getCoordinate().getX(), coordinate.getY() + directions.getCoordinate().getY());
 
-            if( newCordinate.getX() < planet.getLimitX() || newCordinate.getX() > 0 || newCordinate.getY() < planet.getLimitY() || newCordinate.getY() > 0) {
-                return true;
-            }
-
+            return newCoordinate.getX() < planet.getLimitX() || newCoordinate.getX() > 0 || newCoordinate.getY() < planet.getLimitY() || newCoordinate.getY() > 0;
         }
         return false;
     }
-    void movement(Vehicle vehicle, char[] commandsList, Planet planet) {
 
+    void movement(Vehicle vehicle, char[] commandsList, Planet planet) {
         if (isPossibleMove(vehicle, planet)){
             for (char command : commandsList) {
                 switch (command) {

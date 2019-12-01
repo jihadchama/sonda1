@@ -1,4 +1,8 @@
-package br.com.jihad.sonda.modelo;
+package br.com.jihad.sonda;
+
+import br.com.jihad.sonda.model.Coordinate;
+import br.com.jihad.sonda.planet.Planet;
+import br.com.jihad.sonda.vehicle.Sonda;
 
 import java.io.File;
 import java.io.IOException;
