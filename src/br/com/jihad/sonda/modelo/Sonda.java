@@ -31,4 +31,12 @@ public class Sonda extends Vehicle {
     public void currentPosition() {
         System.out.println(coordinate.getX() + " " + coordinate.getY() + " " + direction.name());
     }
+
+    public Coordinate getCoordinate() {
+        return coordinate;
+    }
+
+    public Directions getDirection() {
+        return direction;
+    }
 }

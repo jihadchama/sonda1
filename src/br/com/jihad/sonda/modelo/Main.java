@@ -21,13 +21,13 @@ public class Main {
             if (sondaConfiguration.length == 3) {
                 Coordinate sondaCoordinate = new Coordinate(Character.getNumericValue(sondaConfiguration[0]), Character.getNumericValue(sondaConfiguration[1]));
 
-                Sonda sonda = new Sonda();
-
                 CommandTower commandTower = new CommandTower();
+
+                Sonda sonda = new Sonda();
 
                 commandTower.launch(sonda, sondaCoordinate, sondaConfiguration[2], mars);
 
-                commandTower.movement(sonda, commandsList);
+                commandTower.movement(sonda, commandsList, mars);
 
                 sonda.currentPosition();
             }
