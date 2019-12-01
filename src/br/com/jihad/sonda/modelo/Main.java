@@ -40,21 +40,10 @@ public class Main {
                         break;
                 }
 
-                for (char command : commandsList) {
-                    switch (command) {
-                        case 'L':
-                            sonda.turn('L');
-                            break;
-                        case 'R':
-                            sonda.turn('R');
-                            break;
-                        case 'M':
-                            sonda.move();
-                            break;
-                        default:
-                            System.out.println("Este não é um comando válido.");
-                    }
-                }
+                CommandTower commandTower = new CommandTower();
+
+                commandTower.movement(sonda, commandsList);
+
                 sonda.currentPosition();
             }
         }

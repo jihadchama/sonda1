@@ -1,6 +1,6 @@
 package br.com.jihad.sonda.modelo;
 
-public class Sonda implements Turn, Move, Land{
+public class Sonda extends Vehicle {
 
     private Coordinate coordinate;
     private Directions direction;
