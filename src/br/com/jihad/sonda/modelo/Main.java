@@ -22,25 +22,10 @@ public class Main {
                 Coordinate sondaCoordinate = new Coordinate(Character.getNumericValue(sondaConfiguration[0]), Character.getNumericValue(sondaConfiguration[1]));
 
                 Sonda sonda = new Sonda();
-                switch(sondaConfiguration[2]){
-                    case 'N':
-                        sonda.land(sondaCoordinate, Directions.NORTH, mars);
-                        break;
-                    case 'S':
-                        sonda.land(sondaCoordinate, Directions.SOUTH, mars);
-                        break;
-                    case 'W':
-                        sonda.land(sondaCoordinate, Directions.WEST, mars);
-                        break;
-                    case 'E':
-                        sonda.land(sondaCoordinate, Directions.EAST, mars);
-                        break;
-                    default:
-                        System.out.println("Esta não é uma direção válida.");
-                        break;
-                }
 
                 CommandTower commandTower = new CommandTower();
+
+                commandTower.launch(sonda, sondaCoordinate, sondaConfiguration[2], mars);
 
                 commandTower.movement(sonda, commandsList);
 

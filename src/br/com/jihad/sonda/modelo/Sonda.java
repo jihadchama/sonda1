@@ -5,18 +5,10 @@ public class Sonda extends Vehicle {
     private Coordinate coordinate;
     private Directions direction;
 
-    private boolean isPossibleLand(Coordinate coordinate, Planet planet) {
-        return (coordinate.getX() <= planet.getLimitX()) && (coordinate.getY() <= planet.getLimitY());
-    }
-
     @Override
     public void land(Coordinate coordinate, Directions direction, Planet planet) {
-        if(isPossibleLand(coordinate, planet)) {
-            this.coordinate = coordinate;
-            this.direction = direction;
-        } else {
-            System.out.println("Não é possível pousar a sonda na coordenada informada");
-        }
+        this.coordinate = coordinate;
+        this.direction = direction;
     }
 
     @Override
