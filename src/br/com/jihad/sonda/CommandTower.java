@@ -5,21 +5,19 @@ import br.com.jihad.sonda.model.Directions;
 import br.com.jihad.sonda.planet.Planet;
 import br.com.jihad.sonda.vehicle.Sonda;
 import br.com.jihad.sonda.vehicle.Vehicle;
+import static org.mockito.Mockito.*;
 
 class CommandTower {
 
-    private boolean isPossibleLand(Vehicle vehicle, Planet planet) {
+    private boolean isPossibleLand(Vehicle vehicle, Coordinate coordinate, Planet planet) {
         if (vehicle instanceof Sonda) {
-            Sonda sonda = (Sonda) vehicle;
-            Coordinate coordinate = sonda.getCoordinate();
-            if (coordinate.getX() <= planet.getLimitX()) if (coordinate.getY() <= planet.getLimitY()) return true;
-            return false;
+           return (coordinate.getX() <= planet.getLimitX() && coordinate.getY() <= planet.getLimitY());
         }
         return false;
     }
 
     void launch(Vehicle vehicle, Coordinate coordinate, char direction, Planet planet) {
-        if(isPossibleLand(vehicle, planet)) {
+        if(isPossibleLand(vehicle, coordinate, planet)) {
             switch(direction) {
                 case 'N':
                     vehicle.land(coordinate, Directions.NORTH, planet);
@@ -74,6 +72,3 @@ class CommandTower {
         }
     }
 }
-
-
-
