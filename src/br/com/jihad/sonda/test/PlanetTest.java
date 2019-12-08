@@ -1,15 +1,15 @@
-package br.com.jihad.sonda.planet;
+package br.com.jihad.sonda.test;
 
 import br.com.jihad.sonda.model.Coordinate;
+import br.com.jihad.sonda.planet.Planet;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
 class PlanetTest {
 
     @Test
-    public void planetaWithPositiveCoordinates() {
+    void planetWithPositiveCoordinates() {
 
         Planet planet = new Planet(new Coordinate(6, 6));
 
@@ -18,7 +18,7 @@ class PlanetTest {
     }
 
     @Test
-    public void planetWithNegativeCoordinates() {
+    void planetWithNegativeCoordinates() {
 
         Planet planet = new Planet(new Coordinate(-6,-6));
 
@@ -36,12 +36,11 @@ class PlanetTest {
     }
 
     @Test
-    public void planetWithNegativeYCoordinate() {
+    void planetWithNegativeYCoordinate() {
 
         Planet planet = new Planet(new Coordinate(6,-6));
 
         assertEquals(6, planet.getLimitX());
         assertEquals(6, planet.getLimitY());
     }
-
 }

@@ -6,16 +6,16 @@ import br.com.jihad.sonda.planet.Planet;
 import br.com.jihad.sonda.vehicle.Sonda;
 import br.com.jihad.sonda.vehicle.Vehicle;
 
-class CommandTower {
+public class CommandTower {
 
-    boolean isPossibleLand(Vehicle vehicle, Coordinate coordinate, Planet planet) {
+    public boolean isPossibleLand(Vehicle vehicle, Coordinate coordinate, Planet planet) {
         if (vehicle instanceof Sonda) {
            return (coordinate.getX() <= planet.getLimitX() && coordinate.getY() <= planet.getLimitY());
         }
         return false;
     }
 
-    void launch(Vehicle vehicle, Coordinate coordinate, char direction, Planet planet) {
+    public void launch(Vehicle vehicle, Coordinate coordinate, char direction, Planet planet) {
         if(isPossibleLand(vehicle, coordinate, planet)) {
             switch(direction) {
                 case 'N':
@@ -39,7 +39,7 @@ class CommandTower {
         }
     }
 
-    boolean isPossibleMove(Vehicle vehicle, Planet planet) {
+    public boolean isPossibleMove(Vehicle vehicle, Planet planet) {
         if (vehicle instanceof Sonda) {
             Sonda sonda = (Sonda) vehicle;
             Coordinate coordinate = sonda.getCoordinate();
@@ -51,7 +51,7 @@ class CommandTower {
         return false;
     }
 
-    void movement(Vehicle vehicle, char[] commandsList, Planet planet) {
+    public void movement(Vehicle vehicle, char[] commandsList, Planet planet) {
         if (isPossibleMove(vehicle, planet)){
             for (char command : commandsList) {
                 switch (command) {

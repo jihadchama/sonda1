@@ -1,5 +1,6 @@
-package br.com.jihad.sonda;
+package br.com.jihad.sonda.test;
 
+import br.com.jihad.sonda.CommandTower;
 import br.com.jihad.sonda.model.Coordinate;
 import br.com.jihad.sonda.model.Directions;
 import br.com.jihad.sonda.planet.Planet;
@@ -16,7 +17,8 @@ class CommandTowerTest {
     private CommandTower commandTower;
 
     @BeforeEach
-    public void createSonda() {
+    void createSonda() {
+
         Coordinate coordinate = new Coordinate(6, 6);
         this.planet = new Planet(coordinate);
         this.sonda = new Sonda();
@@ -34,7 +36,7 @@ class CommandTowerTest {
     }
 
     @Test
-    void shouldReturnFalseWhenSondaIsPossibleToLand() {
+    void shouldReturnFalseWhenSondaIsNotPossibleToLand() {
 
         Coordinate sondaCoordinate = new Coordinate(7, 7);
 
@@ -58,7 +60,7 @@ class CommandTowerTest {
     }
 
     @Test
-    void shouldReturnFalseWhenSondaIsPossibleToMove() {
+    void shouldReturnFalseWhenSondaIsNotPossibleToMove() {
 
         Coordinate sondaCoordinate = new Coordinate(6, 6);
 
@@ -82,7 +84,7 @@ class CommandTowerTest {
 
         commandTower.movement(sonda, commandsList, planet);
 
-        assertEquals(3, sonda.getCoordinate().getY(), 0.00001);
+        assertEquals(3, sonda.getCoordinate().getY());
     }
 
     @Test
@@ -96,7 +98,7 @@ class CommandTowerTest {
 
         commandTower.movement(sonda, commandsList, planet);
 
-        assertEquals(1, sonda.getCoordinate().getY(), 0.00001);
+        assertEquals(1, sonda.getCoordinate().getY());
     }
 
     @Test
@@ -110,7 +112,7 @@ class CommandTowerTest {
 
         commandTower.movement(sonda, commandsList, planet);
 
-        assertEquals(2, sonda.getCoordinate().getX(), 0.00001);
+        assertEquals(2, sonda.getCoordinate().getX());
     }
 
     @Test
@@ -124,7 +126,7 @@ class CommandTowerTest {
 
         commandTower.movement(sonda, commandsList, planet);
 
-        assertEquals(0, sonda.getCoordinate().getX(), 0.00001);
+        assertEquals(0, sonda.getCoordinate().getX());
     }
 
     @Test
