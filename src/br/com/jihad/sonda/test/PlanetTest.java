@@ -27,7 +27,7 @@ class PlanetTest {
     }
 
     @Test
-    public void planetWithNegativeXCoordinate() {
+    void planetWithNegativeXCoordinate() {
 
         Planet planet = new Planet(new Coordinate(-6,6));
 

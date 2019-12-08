@@ -130,7 +130,7 @@ class CommandTowerTest {
     }
 
     @Test
-    void shouldTurnToRightFromNorth() {
+    void directionShouldBeEastWhenTurnToRightFromNorth() {
 
         Coordinate sondaCoordinate = new Coordinate(1, 2);
 
@@ -144,7 +144,7 @@ class CommandTowerTest {
     }
 
     @Test
-    void shouldTurnToRightFromEast() {
+    void directionShouldBeSouthWhenTurnToRightFromEast() {
 
         Coordinate sondaCoordinate = new Coordinate(1, 2);
 
@@ -158,7 +158,7 @@ class CommandTowerTest {
     }
 
     @Test
-    void shouldTurnToRightFromSouth() {
+    void directionShouldBeWestWhenTurnToRightFromSouth() {
 
         Coordinate sondaCoordinate = new Coordinate(1, 2);
 
@@ -174,7 +174,7 @@ class CommandTowerTest {
     }
 
     @Test
-    void shouldTurnToRightFromWest() {
+    void directionShouldBeNorthWhenTurnToRightFromWest() {
 
         Coordinate sondaCoordinate = new Coordinate(1, 2);
 
@@ -188,7 +188,7 @@ class CommandTowerTest {
     }
 
     @Test
-    void shouldTurnToLeftFromNorth() {
+    void directionShouldBeWestWhenTurnToLeftFromNorth() {
 
         Coordinate sondaCoordinate = new Coordinate(1, 2);
 
@@ -202,7 +202,7 @@ class CommandTowerTest {
     }
 
     @Test
-    void shouldTurnToLeftFromWest() {
+    void directionShouldBeSouthWhenTurnToLeftFromWest() {
 
         Coordinate sondaCoordinate = new Coordinate(1, 2);
 
@@ -216,7 +216,7 @@ class CommandTowerTest {
     }
 
     @Test
-    void shouldTurnToLeftFromSouth() {
+    void directionShouldBeEastWhenTurnToLeftFromSouth() {
 
         Coordinate sondaCoordinate = new Coordinate(1, 2);
 
@@ -230,7 +230,7 @@ class CommandTowerTest {
     }
 
     @Test
-    void shouldTurnToLeftFromEast() {
+    void directionShouldBeNorthWhenTurnToLeftFromEast() {
 
         Coordinate sondaCoordinate = new Coordinate(1, 2);
 

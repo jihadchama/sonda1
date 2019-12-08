@@ -11,7 +11,7 @@ public class Sonda extends Vehicle {
 
     @Override
     public void land(Coordinate coordinate, Directions direction, Planet planet) {
-        this.coordinate = coordinate;
+        this.coordinate = new Coordinate(Math.abs(coordinate.getX()), Math.abs(coordinate.getY()));
         this.direction = direction;
     }
 

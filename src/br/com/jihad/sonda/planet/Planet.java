@@ -7,7 +7,8 @@ public class Planet {
     private final Coordinate coordinate;
 
     public Planet(Coordinate coordinate) {
-        this.coordinate = coordinate;
+
+        this.coordinate = new Coordinate(Math.abs(coordinate.getX()), Math.abs(coordinate.getY()));
     }
 
     public int getLimitX() {

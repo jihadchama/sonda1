@@ -16,7 +16,7 @@ class SondaTest {
     private Coordinate sondaCoordinate;
 
     @BeforeEach
-    void createSonda(){
+    void createSonda() {
 
         Coordinate coordinate = new Coordinate(6,6);
         this.planet = new Planet(coordinate);
@@ -26,6 +26,17 @@ class SondaTest {
 
     @Test
     void shouldLandTheSonda() {
+
+        sonda.land(sondaCoordinate, Directions.NORTH, planet);
+
+        assertEquals(1, sonda.getCoordinate().getX());
+        assertEquals(2, sonda.getCoordinate().getY());
+    }
+
+    @Test
+    void shouldLandTheSondaWithPositiveCoordinatesIfTheyAreNegative() {
+
+        this.sondaCoordinate = new Coordinate(-1,-2);
 
         sonda.land(sondaCoordinate, Directions.NORTH, planet);
 
@@ -45,7 +56,7 @@ class SondaTest {
     }
 
     @Test
-    void ShouldTurnTheSondaToRightFromNorth() {
+    void directionShouldBeEastWhenSondaTurnRightFromNorth() {
 
         sonda.land(sondaCoordinate, Directions.NORTH, planet);
 
@@ -55,7 +66,7 @@ class SondaTest {
     }
 
     @Test
-    void ShouldTurnTheSondaToRightFromEast() {
+    void directionShouldBeSouthWhenSondaTurnRightFromEast() {
 
         sonda.land(sondaCoordinate, Directions.EAST, planet);
 
@@ -65,7 +76,7 @@ class SondaTest {
     }
 
     @Test
-    void ShouldTurnTheSondaToRightFromSouth() {
+    void directionShouldBeWestWhenSondaTurnRightFromSouth() {
 
         sonda.land(sondaCoordinate, Directions.SOUTH, planet);
 
@@ -75,7 +86,7 @@ class SondaTest {
     }
 
     @Test
-    void ShouldTurnTheSondaToRightFromWest() {
+    void directionShouldBeNorthWhenSondaTurnRightFromWest() {
 
         sonda.land(sondaCoordinate, Directions.WEST, planet);
 
@@ -85,7 +96,7 @@ class SondaTest {
     }
 
     @Test
-    void ShouldTurnTheSondaToLeftFromNorth() {
+    void directionShouldBeWestWhenSondaTurnLeftFromNorth() {
 
         sonda.land(sondaCoordinate, Directions.NORTH, planet);
 
@@ -95,7 +106,7 @@ class SondaTest {
     }
 
     @Test
-    void ShouldTurnTheSondaToLeftFromWest() {
+    void directionShouldBeSouthWhenSondaTurnLeftFromWest() {
 
         sonda.land(sondaCoordinate, Directions.WEST, planet);
 
@@ -105,7 +116,7 @@ class SondaTest {
     }
 
     @Test
-    void ShouldTurnTheSondaToLeftFromSouth() {
+    void directionShouldBeEastWhenSondaTurnLeftFromSouth() {
 
         sonda.land(sondaCoordinate, Directions.SOUTH, planet);
 
@@ -115,7 +126,7 @@ class SondaTest {
     }
 
     @Test
-    void ShouldTurnTheSondaToLeftFromEAST() {
+    void directionShouldBeNorthWhenSondaTurnLeftFromEast() {
 
         sonda.land(sondaCoordinate, Directions.EAST, planet);
 
