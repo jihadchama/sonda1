@@ -46,7 +46,7 @@ class CommandTower {
             Directions directions = sonda.getDirection();
             Coordinate newCoordinate = new Coordinate(coordinate.getX() + directions.getCoordinate().getX(), coordinate.getY() + directions.getCoordinate().getY());
 
-            return (newCoordinate.getX() <= planet.getLimitX() && newCoordinate.getX() > 0 && newCoordinate.getY() <= planet.getLimitY() && newCoordinate.getY() > 0);
+            return (newCoordinate.getX() <= planet.getLimitX() && newCoordinate.getX() >= 0 && newCoordinate.getY() <= planet.getLimitY() && newCoordinate.getY() >= 0);
         }
         return false;
     }

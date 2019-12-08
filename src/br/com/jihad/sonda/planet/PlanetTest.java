@@ -9,21 +9,39 @@ import static org.junit.jupiter.api.Assertions.*;
 class PlanetTest {
 
     @Test
-    public void PlanetaComCoordenadasPositivas(){
+    public void planetaWithPositiveCoordinates() {
 
-        Planet planet = new Planet(new Coordinate(3, 2));
+        Planet planet = new Planet(new Coordinate(6, 6));
 
-        assertEquals(3, planet.getLimitX());
-        assertEquals(2, planet.getLimitY());
+        assertEquals(6, planet.getLimitX());
+        assertEquals(6, planet.getLimitY());
     }
 
     @Test
-    public void PlanetaComCoordenadasNegativas(){
+    public void planetWithNegativeCoordinates() {
 
-        Planet planet = new Planet(new Coordinate(-3,-2));
+        Planet planet = new Planet(new Coordinate(-6,-6));
 
-        assertEquals(3, planet.getLimitX());
-        assertEquals(2, planet.getLimitY());
+        assertEquals(6, planet.getLimitX());
+        assertEquals(6, planet.getLimitY());
+    }
+
+    @Test
+    public void planetWithNegativeXCoordinate() {
+
+        Planet planet = new Planet(new Coordinate(-6,6));
+
+        assertEquals(6, planet.getLimitX());
+        assertEquals(6, planet.getLimitY());
+    }
+
+    @Test
+    public void planetWithNegativeYCoordinate() {
+
+        Planet planet = new Planet(new Coordinate(6,-6));
+
+        assertEquals(6, planet.getLimitX());
+        assertEquals(6, planet.getLimitY());
     }
 
 }
